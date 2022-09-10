@@ -19,14 +19,14 @@ module.exports = async function (context, req) {
     let resultadoLucro = calcularLucro(custoTotal, lucroPeca);
     let totalPeca = totalValorPeca (custoTotal, resultadoLucro);
 
-    return res.json({
+    context.res.json({
         materiais: materiaisUsados, 
         custos: custosVariaveis, 
         valorHora: horaTrabalhada,
         qtdeHora: quantidadeHora,
         lucro: lucroPeca,
         totalCusto: custoTotal, 
-        qtdeLucro: resultadoLucro,
-        valorTotal: totalPeca
+        qtdeLucro: resultadoLucro.toFixed(2),
+        valorTotal: totalPeca.toFixed(2)
     });
 }
